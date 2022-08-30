@@ -1,0 +1,11 @@
+.idea
+
+/node_modules
+/dist/*
+!/dist/style.css
+/media/*
+!/media/examples
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
