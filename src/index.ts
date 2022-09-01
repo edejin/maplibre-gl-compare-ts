@@ -17,6 +17,7 @@ export class Compare {
   private controlContainer = document.createElement('div');
   private readonly clearSync: () => void;
   currentPosition?: number;
+  private initialSelectValue?: string;
 
   /**
    *
@@ -113,6 +114,8 @@ export class Compare {
       document.addEventListener('mousemove', this.onMove);
       document.addEventListener('mouseup', this.onMouseUp);
     }
+    this.initialSelectValue = this.controlContainer.style.userSelect;
+    this.controlContainer.style.userSelect = 'none';
   };
 
   onMove = (e: MouseEvent | TouchEvent): void => {
@@ -131,12 +134,14 @@ export class Compare {
     document.removeEventListener('mousemove', this.onMove);
     document.removeEventListener('mouseup', this.onMouseUp);
     this.fire('slideend', {currentPosition: this.currentPosition});
+    this.controlContainer.style.userSelect = this.initialSelectValue!;
   };
 
   onTouchEnd = (): void => {
     document.removeEventListener('touchmove', this.onMove);
     document.removeEventListener('touchend', this.onTouchEnd);
     this.fire('slideend', {currentPosition: this.currentPosition});
+    this.controlContainer.style.userSelect = this.initialSelectValue!;
   };
 
   onResize = (): void => {

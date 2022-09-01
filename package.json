@@ -1,6 +1,6 @@
 {
   "name": "maplibre-gl-compare-ts",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Swipe and sync between two MapLibre maps",
   "scripts": {
     "build": "npm run build:es2015 && npm run build:esm && npm run build:cjs",
